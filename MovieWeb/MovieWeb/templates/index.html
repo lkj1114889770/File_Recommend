@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommede</title>
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css" />
+</head>
+<body>
+<div class="header-top-strip">
+    <div class="container">
+        <div class="search">
+            <div class="search2">
+                <form action="/search/" method="post">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                        <i class="fa fa-search"></i>
+                        <input name="var" type="text" value="Search for a movie, play, event, sport or more" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search for a movie, play, event, sport or more';}"/>{#                        <td><input type="submit" value="Search"/></td>#}
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="main-content">
+<div class="footer-top-grid">
+    {% for item in home %}
+        <div style="margin-top: 0px; margin-bottom: 5px">
+        <div class="list-of-movies col-md-8">
+        <div class="tabs">
+            <div class="sap_tabs">
+                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                    <div class="resp-tabs-container">
+                        <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                            <ul class="tab_img">
+                              <li>
+                                <div class="view view-first">
+                                  <a href="movie-select-show.html"> <img src="/static/images/{{ item.genre }}/{{ item.image1 }}.jpg" class="img-responsive" alt=""/></a>
+                                   <div class="info1"> </div>
+                                    <div class="mask"></div>
+                                    <div class="tab_desc">
+                                        <a href="movie-select-show.html">Book Now</a>
+                                        <div class="percentage-w-t-s">
+                                            <h5>8</h5>
+                                            <p><br> Points</p>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="view view-first">
+                                   <a href="movie-select-show.html"><img src="/static/images/{{ item.genre }}/{{ item.image2 }}.jpg" class="img-responsive" alt=""/></a>
+                                   <div class="info1"> </div>
+                                     <div class="mask">
+                                     </div>
+                                      <div class="tab_desc">
+                                            <a href="movie-select-show.html">Book Now</a>
+                                            <div class="percentage-w-t-s">
+                                                <h5>8</h5>
+                                                <p><br> Points</p>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                      </div>
+                                  </div>
+                                </li>
+                              <li>
+                                <div class="view view-first">
+                                   <a href="movie-select-show.html"><img src="/static/images/{{ item.genre }}/{{ item.image3 }}.jpg" class="img-responsive" alt=""/></a>
+                                     <div class="mask">
+                                        <div class="info1"> </div>
+                                      </div>
+                                        <div class="tab_desc">
+                                            <a href="movie-select-show.html">Book Now</a>
+                                            <div class="percentage-w-t-s">
+                                                <h5>8</h5>
+                                                <p><br> Points</p>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                      </div>
+                                  </div>
+                              </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        </div>
+        <div class="top-movies">
+            <h4>Top Movies of {{ item.genre }}</h4>
+            {% for movie in item.data %}
+                <ul class="mov_list">
+                    <li><i class="fa fa-star"></i></li>
+                    <li>{{ movie.vote_average }}</li>
+                    <li><a href="movie-single.html">{{ movie.title }} ({{ movie.year }})</a></li>
+                </ul>
+            {% endfor %}
+        </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
+</body>
+</html>
