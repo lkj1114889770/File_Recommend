@@ -64,7 +64,7 @@ def savedata():
 
 
 def loaddata(database):
-    conn = pymysql.connect(host='10.110.43.140', port=3306, user='lkj', passwd='0818lkj', db=database, use_unicode=True, charset='utf8')
+    conn = pymysql.connect(host='10.110.43.140', port=3306, user='###', passwd='######', db=database, use_unicode=True, charset='utf8')
     cur = conn.cursor()
     sql = "select * from `tb_movies`"
     cur.execute(sql)
@@ -75,7 +75,7 @@ def loaddata(database):
 
 
 def saveTop(database, path, type):
-    conn = pymysql.connect(host='10.110.43.140', port=3306, user='lkj', passwd='0818lkj', use_unicode=True,
+    conn = pymysql.connect(host='10.110.43.140', port=3306, user='###', passwd='######', use_unicode=True,
                            charset='utf8')
     cur = conn.cursor()
     cur.execute('SET NAMES utf8;')
